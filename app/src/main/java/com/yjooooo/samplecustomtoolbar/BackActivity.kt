@@ -3,9 +3,9 @@ package com.yjooooo.samplecustomtoolbar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class ThirdActivity : AppCompatActivity() {
+class BackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_third)
+        setContentView(R.layout.activity_back)
     }
 }

@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">SampleCustomToolbar</string>
+    <string name="app_name">SampleCustomTitleBar</string>
+    <string name="back_title">뒤로가기 클릭 후 화면 이동</string>
+    <string name="close_title">X 클릭 후 화면 이동</string>
+    <string name="plus_title">+ 클릭 후 화면 이동</string>
+    <string name="back_title_view_text">뒤로가기 타이틀 뷰</string>
+    <string name="close_title_view_text">종료 타이틀 뷰</string>
+    <string name="plus_title_view_text">추가 타이틀 뷰</string>
+    <string name="desc_title_view_back">뒤로가기 버튼</string>
+    <string name="desc_title_view_close">창 끄기 버튼</string>
+    <string name="desc_title_view_plus">정보 추가 버튼</string>
+    <string name="title_view_text">View Title</string>
 </resources>
