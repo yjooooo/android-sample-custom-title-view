@@ -12,15 +12,14 @@ import com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode.Companion.TITLE_
 import com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode.Companion.TITLE_VIEW_PLUS_BUTTON
 import com.yjooooo.samplecustomtoolbar.R
 import com.yjooooo.samplecustomtoolbar.databinding.CustomTitleViewBinding
-import com.yjooooo.samplecustomtoolbar.main.MainViewModel
 import java.lang.IllegalStateException
 
 class CustomTitleView : ConstraintLayout {
     private lateinit var binding: CustomTitleViewBinding
     private var titleViewMode: Int = -1
-    lateinit var backClickEvent: () -> Unit
-    lateinit var closeClickEvent: () -> Unit
-    lateinit var plusClickEvent: () -> Unit
+    private var backClickListener: OnBackClickListener? = null
+    private var closeClickListener: OnCloseClickListener? = null
+    private var plusClickListener: OnPlusClickListener? = null
 
     constructor(context: Context) : super(context) {
         initView()
@@ -44,6 +43,7 @@ class CustomTitleView : ConstraintLayout {
             this@CustomTitleView,
             true
         )
+        binding.view = this
     }
 
     private fun getAttrs(attrs: AttributeSet) {
@@ -82,34 +82,28 @@ class CustomTitleView : ConstraintLayout {
         }
     }
 
-    fun setButtonClickListener(viewModel: MainViewModel) {
-        if (titleViewMode == TITLE_VIEW_BACK_BUTTON) {
-            binding.btnCustomTitleViewBack.setOnClickListener { viewModel.setBackButtonClick() }
-        }
-        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
-            binding.btnCustomTitleViewClose.setOnClickListener { viewModel.setCloseButtonClick() }
-        }
-        if (titleViewMode == TITLE_VIEW_PLUS_BUTTON) {
-            binding.btnCustomTitleViewPlus.setOnClickListener { viewModel.setPlusButtonClick() }
-        }
-    }
-
     fun setBackButtonClickListener(listener: OnBackClickListener) {
-        if (titleViewMode == TITLE_VIEW_BACK_BUTTON) {
-            binding.btnCustomTitleViewBack.setOnClickListener { listener.onBackClick(it) }
-        }
+        backClickListener = listener
     }
 
     fun setCloseButtonClickListener(listener: OnCloseClickListener) {
-        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
-            binding.btnCustomTitleViewClose.setOnClickListener { listener.onCloseClick(it) }
-        }
+        closeClickListener = listener
     }
 
     fun setPlusButtonClickListener(listener: OnPlusClickListener) {
-        if (titleViewMode == TITLE_VIEW_PLUS_BUTTON) {
-            binding.btnCustomTitleViewPlus.setOnClickListener { listener.onPlusClick(it) }
-        }
+        plusClickListener = listener
+    }
+
+    fun backClick() {
+        backClickListener?.onBackClick(binding.btnCustomTitleViewBack)
+    }
+
+    fun closeClick() {
+        closeClickListener?.onCloseClick(binding.btnCustomTitleViewClose)
+    }
+
+    fun plusClick() {
+        plusClickListener?.onPlusClick(binding.btnCustomTitleViewPlus)
     }
 
     interface OnBackClickListener {

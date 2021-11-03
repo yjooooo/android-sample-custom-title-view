@@ -5,12 +5,6 @@ import com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
 import com.yjooooo.samplecustomtoolbar.main.MainViewModel
 
 object BindingAdapters {
-    @BindingAdapter("setViewModel")
-    @JvmStatic
-    fun setViewModel(view: CustomTitleView, viewModel: MainViewModel) {
-        view.setButtonClickListener(viewModel)
-    }
-
     @BindingAdapter("onBackClick")
     @JvmStatic
     fun onBackClick(view: CustomTitleView, listener: CustomTitleView.OnBackClickListener) {
