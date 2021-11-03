@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTitleView">
+        <attr name="titleViewMode" format="reference|integer"/>
+        <attr name="titleText" format="reference|string"/>
+    </declare-styleable>
+</resources>
