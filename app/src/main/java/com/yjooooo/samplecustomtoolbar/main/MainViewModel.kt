@@ -1,8 +1,10 @@
 package com.yjooooo.samplecustomtoolbar.main
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
 import com.yjooooo.samplecustomtoolbar.util.Event
 
 class MainViewModel : ViewModel() {
@@ -14,6 +16,24 @@ class MainViewModel : ViewModel() {
 
     private val _closeButtonClick = MutableLiveData<Event<Boolean>>()
     val closeButtonClick: LiveData<Event<Boolean>> = _closeButtonClick
+
+    val mainBackButtonClick = object:CustomTitleView.OnBackClickListener{
+        override fun onBackClick(view: View?) {
+            setBackButtonClick()
+        }
+    }
+
+    val mainCloseButtonClick = object:CustomTitleView.OnCloseClickListener{
+        override fun onCloseClick(view: View?) {
+            setCloseButtonClick()
+        }
+    }
+
+    val mainPlusButtonClick = object:CustomTitleView.OnPlusClickListener{
+        override fun onPlusClick(view: View?) {
+            setPlusButtonClick()
+        }
+    }
 
     fun setBackButtonClick() {
         _backButtonClick.value = Event(true)

@@ -7,25 +7,25 @@ import com.yjooooo.samplecustomtoolbar.main.MainViewModel
 object BindingAdapters {
     @BindingAdapter("setViewModel")
     @JvmStatic
-    fun setViewModel(view: CustomTitleView, viewModel:MainViewModel) {
+    fun setViewModel(view: CustomTitleView, viewModel: MainViewModel) {
         view.setButtonClickListener(viewModel)
     }
 
-//    @BindingAdapter("onBackClick")
-//    @JvmStatic
-//    fun onBackClick(view: CustomTitleView, clickEvent: () -> Unit) {
-//        view.setBackButtonClickListener(clickEvent)
-//    }
-//
-//    @BindingAdapter("onCloseClick")
-//    @JvmStatic
-//    fun onCloseClick(view: CustomTitleView, clickEvent: () -> Unit) {
-//        view.setCloseButtonClickListener(clickEvent)
-//    }
-//
-//    @BindingAdapter("onPlusClick")
-//    @JvmStatic
-//    fun onPlusClick(view: CustomTitleView, clickEvent: () -> Unit) {
-//        view.setPlusButtonClickListener(clickEvent)
-//    }
+    @BindingAdapter("onBackClick")
+    @JvmStatic
+    fun onBackClick(view: CustomTitleView, listener: CustomTitleView.OnBackClickListener) {
+        view.setBackButtonClickListener(listener)
+    }
+
+    @BindingAdapter("onCloseClick")
+    @JvmStatic
+    fun onCloseClick(view: CustomTitleView, listener: CustomTitleView.OnCloseClickListener) {
+        view.setCloseButtonClickListener(listener)
+    }
+
+    @BindingAdapter("onPlusClick")
+    @JvmStatic
+    fun onPlusClick(view: CustomTitleView, listener: CustomTitleView.OnPlusClickListener) {
+        view.setPlusButtonClickListener(listener)
+    }
 }

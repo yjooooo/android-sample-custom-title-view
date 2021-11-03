@@ -22,7 +22,7 @@
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_back"
-            setViewModel="@{viewModel}"
+            onBackClick="@{viewModel.mainBackButtonClick}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_close"
-            setViewModel="@{viewModel}"
+            onCloseClick="@{viewModel.mainCloseButtonClick}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_plus"
-            setViewModel="@{viewModel}"
+            onPlusClick="@{viewModel.mainPlusButtonClick}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

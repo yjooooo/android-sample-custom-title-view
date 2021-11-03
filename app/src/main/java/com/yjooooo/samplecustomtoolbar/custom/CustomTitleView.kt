@@ -18,8 +18,9 @@ import java.lang.IllegalStateException
 class CustomTitleView : ConstraintLayout {
     private lateinit var binding: CustomTitleViewBinding
     private var titleViewMode: Int = -1
-    var clickEvent: () -> Unit = {}
-
+    lateinit var backClickEvent: () -> Unit
+    lateinit var closeClickEvent: () -> Unit
+    lateinit var plusClickEvent: () -> Unit
 
     constructor(context: Context) : super(context) {
         initView()
@@ -93,21 +94,33 @@ class CustomTitleView : ConstraintLayout {
         }
     }
 
-//    fun setBackButtonClickListener(clickEvent: () -> Unit) {
-//        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
-//            binding.btnCustomTitleViewBack.setOnClickListener { clickEvent() }
-//        }
-//    }
-//
-//    fun setCloseButtonClickListener(clickEvent: () -> Unit) {
-//        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
-//            binding.btnCustomTitleViewClose.setOnClickListener { clickEvent() }
-//        }
-//    }
-//
-//    fun setPlusButtonClickListener(clickEvent: () -> Unit) {
-//        if (titleViewMode == TITLE_VIEW_PLUS_BUTTON) {
-//            binding.btnCustomTitleViewPlus.setOnClickListener { clickEvent() }
-//        }
-//    }
+    fun setBackButtonClickListener(listener: OnBackClickListener) {
+        if (titleViewMode == TITLE_VIEW_BACK_BUTTON) {
+            binding.btnCustomTitleViewBack.setOnClickListener { listener.onBackClick(it) }
+        }
+    }
+
+    fun setCloseButtonClickListener(listener: OnCloseClickListener) {
+        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
+            binding.btnCustomTitleViewClose.setOnClickListener { listener.onCloseClick(it) }
+        }
+    }
+
+    fun setPlusButtonClickListener(listener: OnPlusClickListener) {
+        if (titleViewMode == TITLE_VIEW_PLUS_BUTTON) {
+            binding.btnCustomTitleViewPlus.setOnClickListener { listener.onPlusClick(it) }
+        }
+    }
+
+    interface OnBackClickListener {
+        fun onBackClick(view: View?)
+    }
+
+    interface OnCloseClickListener {
+        fun onCloseClick(view: View?)
+    }
+
+    interface OnPlusClickListener {
+        fun onPlusClick(view: View?)
+    }
 }
