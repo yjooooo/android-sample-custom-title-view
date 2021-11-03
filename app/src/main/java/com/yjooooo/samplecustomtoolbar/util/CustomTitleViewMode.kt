@@ -1,6 +1,6 @@
 package com.yjooooo.samplecustomtoolbar.util
 
-class ConstValueUtil {
+class CustomTitleViewMode {
     companion object {
         const val TITLE_VIEW_BACK_BUTTON = 0
         const val TITLE_VIEW_CLOSE_BUTTON = 1

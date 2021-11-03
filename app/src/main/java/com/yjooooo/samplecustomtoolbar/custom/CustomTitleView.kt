@@ -7,15 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
-import com.yjooooo.samplecustomtoolbar.util.ConstValueUtil.Companion.TITLE_VIEW_BACK_BUTTON
-import com.yjooooo.samplecustomtoolbar.util.ConstValueUtil.Companion.TITLE_VIEW_CLOSE_BUTTON
-import com.yjooooo.samplecustomtoolbar.util.ConstValueUtil.Companion.TITLE_VIEW_PLUS_BUTTON
+import com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode.Companion.TITLE_VIEW_BACK_BUTTON
+import com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode.Companion.TITLE_VIEW_CLOSE_BUTTON
+import com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode.Companion.TITLE_VIEW_PLUS_BUTTON
 import com.yjooooo.samplecustomtoolbar.R
 import com.yjooooo.samplecustomtoolbar.databinding.CustomTitleViewBinding
+import com.yjooooo.samplecustomtoolbar.main.MainViewModel
 import java.lang.IllegalStateException
 
 class CustomTitleView : ConstraintLayout {
     private lateinit var binding: CustomTitleViewBinding
+    private var titleViewMode: Int = -1
+    var clickEvent: () -> Unit = {}
+
 
     constructor(context: Context) : super(context) {
         initView()
@@ -39,9 +43,6 @@ class CustomTitleView : ConstraintLayout {
             this@CustomTitleView,
             true
         )
-
-//        binding = CustomTitleViewBinding.inflate(layoutInflater,this,true)
-
     }
 
     private fun getAttrs(attrs: AttributeSet) {
@@ -71,7 +72,8 @@ class CustomTitleView : ConstraintLayout {
     }
 
     private fun setTitleViewMode(mode: Int) {
-        when (mode) {
+        titleViewMode = mode
+        when (titleViewMode) {
             TITLE_VIEW_BACK_BUTTON -> binding.btnCustomTitleViewBack.visibility = View.VISIBLE
             TITLE_VIEW_CLOSE_BUTTON -> binding.btnCustomTitleViewClose.visibility = View.VISIBLE
             TITLE_VIEW_PLUS_BUTTON -> binding.btnCustomTitleViewPlus.visibility = View.VISIBLE
@@ -79,4 +81,33 @@ class CustomTitleView : ConstraintLayout {
         }
     }
 
+    fun setButtonClickListener(viewModel: MainViewModel) {
+        if (titleViewMode == TITLE_VIEW_BACK_BUTTON) {
+            binding.btnCustomTitleViewBack.setOnClickListener { viewModel.setBackButtonClick() }
+        }
+        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
+            binding.btnCustomTitleViewClose.setOnClickListener { viewModel.setCloseButtonClick() }
+        }
+        if (titleViewMode == TITLE_VIEW_PLUS_BUTTON) {
+            binding.btnCustomTitleViewPlus.setOnClickListener { viewModel.setPlusButtonClick() }
+        }
+    }
+
+//    fun setBackButtonClickListener(clickEvent: () -> Unit) {
+//        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
+//            binding.btnCustomTitleViewBack.setOnClickListener { clickEvent() }
+//        }
+//    }
+//
+//    fun setCloseButtonClickListener(clickEvent: () -> Unit) {
+//        if (titleViewMode == TITLE_VIEW_CLOSE_BUTTON) {
+//            binding.btnCustomTitleViewClose.setOnClickListener { clickEvent() }
+//        }
+//    }
+//
+//    fun setPlusButtonClickListener(clickEvent: () -> Unit) {
+//        if (titleViewMode == TITLE_VIEW_PLUS_BUTTON) {
+//            binding.btnCustomTitleViewPlus.setOnClickListener { clickEvent() }
+//        }
+//    }
 }

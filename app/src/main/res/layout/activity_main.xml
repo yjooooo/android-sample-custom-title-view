@@ -5,38 +5,49 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.yjooooo.samplecustomtoolbar.main.MainViewModel" />
+
+        <variable
+            name="mode"
+            type="com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".main.MainActivity">
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
-            android:id="@+id/title_view_1st"
+            android:id="@+id/title_view_back"
+            setViewModel="@{viewModel}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText="첫번째 타이틀 뷰"
+            app:titleText="뒤로가기 타이틀 뷰"
             app:titleViewMode="0" />
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
-            android:id="@+id/title_view_2nd"
+            android:id="@+id/title_view_close"
+            setViewModel="@{viewModel}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_view_1st"
-            app:titleText="두번째 타이틀 뷰"
+            app:layout_constraintTop_toBottomOf="@id/title_view_back"
+            app:titleText="종료 타이틀 뷰"
             app:titleViewMode="1" />
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
-            android:id="@+id/title_view_3rd"
+            android:id="@+id/title_view_plus"
+            setViewModel="@{viewModel}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_view_2nd"
-            app:titleText="세번째 타이틀 뷰"
+            app:layout_constraintTop_toBottomOf="@id/title_view_close"
+            app:titleText="추가 타이틀 뷰"
             app:titleViewMode="2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
