@@ -5,8 +5,9 @@
 
     <data>
 
-        <import type="android.view.View"/>
-        <import type="com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode"/>
+        <import type="android.view.View" />
+
+        <import type="com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode" />
 
         <variable
             name="viewModel"
@@ -22,32 +23,62 @@
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_back"
             onBackClick="@{viewModel::setBackButtonClick}"
+            setTitleViewMode="@{CustomTitleViewMode.TITLE_VIEW_BACK_BUTTON}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText="@string/back_title_view_text"
-            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_BACK_BUTTON}" />
+            app:titleText="@string/back_title_view_text" />
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_close"
             onCloseClick="@{viewModel::setCloseButtonClick}"
+            setTitleViewMode="@{CustomTitleViewMode.TITLE_VIEW_CLOSE_BUTTON}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_view_back"
-            app:titleText="@string/close_title_view_text"
-            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_CLOSE_BUTTON}" />
+            app:titleText="@string/close_title_view_text" />
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_plus"
             onPlusClick="@{viewModel::setPlusButtonClick}"
+            setTitleViewMode="@{CustomTitleViewMode.TITLE_VIEW_PLUS_BUTTON}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_view_close"
-            app:titleText="@string/plus_title_view_text"
-            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_PLUS_BUTTON}" />
+            app:titleText="@string/plus_title_view_text" />
+
+        <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView2
+            android:id="@+id/title_view2_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_view_plus"
+            app:onBackBtnClick="@{viewModel::setBackButtonClick}"
+            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_BACK_BUTTON}"
+            app:titleViewText="@{viewModel.backTitle}" />
+
+        <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView2
+            android:id="@+id/title_view2_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_view2_back"
+            app:onCloseBtnClick="@{viewModel::setCloseButtonClick}"
+            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_CLOSE_BUTTON}"
+            app:titleViewText="@{viewModel.closeTitle}" />
+
+        <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView2
+            android:id="@+id/title_view2_plus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_view2_close"
+            app:onPlusBtnClick="@{viewModel::setPlusButtonClick}"
+            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_PLUS_BUTTON}"
+            app:titleViewText="@{viewModel.plusTitle}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

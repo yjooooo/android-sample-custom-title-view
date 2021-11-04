@@ -7,7 +7,7 @@
 
         <variable
             name="view"
-            type="com.yjooooo.samplecustomtoolbar.custom.CustomTitleView" />
+            type="com.yjooooo.samplecustomtoolbar.custom.CustomTitleView2" />
 
     </data>
 
@@ -68,6 +68,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_custom_title_view_plus"
             app:layout_constraintStart_toEndOf="@id/btn_custom_title_view_back"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/title_view_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

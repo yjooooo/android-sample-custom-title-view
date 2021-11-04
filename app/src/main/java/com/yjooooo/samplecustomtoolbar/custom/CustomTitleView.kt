@@ -65,7 +65,7 @@ class CustomTitleView : ConstraintLayout {
         binding.tvCustomTitleViewTitle.text = title
     }
 
-    fun setTitleViewMode(mode: Int) {
+    fun setMode(mode: Int) {
         titleViewMode = mode
         when (titleViewMode) {
             TITLE_VIEW_BACK_BUTTON -> binding.btnCustomTitleViewBack.visibility = View.VISIBLE

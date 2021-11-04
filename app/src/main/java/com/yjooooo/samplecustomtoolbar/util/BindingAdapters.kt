@@ -2,13 +2,12 @@ package com.yjooooo.samplecustomtoolbar.util
 
 import androidx.databinding.BindingAdapter
 import com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
-import com.yjooooo.samplecustomtoolbar.main.MainViewModel
 
 object BindingAdapters {
     @BindingAdapter("setTitleViewMode")
     @JvmStatic
     fun setTitleViewMode(view: CustomTitleView, mode: Int) {
-        view.setTitleViewMode(mode)
+        view.setMode(mode)
     }
 
     @BindingAdapter("onBackClick")
