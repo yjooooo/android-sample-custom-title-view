@@ -10,6 +10,7 @@ import com.yjooooo.samplecustomtoolbar.R
 import com.yjooooo.samplecustomtoolbar.CloseActivity
 import com.yjooooo.samplecustomtoolbar.PlusActivity
 import com.yjooooo.samplecustomtoolbar.databinding.ActivityMainBinding
+import com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode
 import com.yjooooo.samplecustomtoolbar.util.EventObserver
 
 class MainActivity : AppCompatActivity() {

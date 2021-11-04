@@ -5,13 +5,12 @@
 
     <data>
 
+        <import type="android.view.View"/>
+        <import type="com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode"/>
+
         <variable
             name="viewModel"
             type="com.yjooooo.samplecustomtoolbar.main.MainViewModel" />
-
-        <variable
-            name="mode"
-            type="com.yjooooo.samplecustomtoolbar.util.CustomTitleViewMode" />
 
     </data>
 
@@ -22,33 +21,33 @@
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_back"
-            onBackClick="@{viewModel.mainBackButtonClick}"
+            onBackClick="@{viewModel::setBackButtonClick}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:titleText="@string/back_title_view_text"
-            app:titleViewMode="0" />
+            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_BACK_BUTTON}" />
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_close"
-            onCloseClick="@{viewModel.mainCloseButtonClick}"
+            onCloseClick="@{viewModel::setCloseButtonClick}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_view_back"
             app:titleText="@string/close_title_view_text"
-            app:titleViewMode="1" />
+            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_CLOSE_BUTTON}" />
 
         <com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
             android:id="@+id/title_view_plus"
-            onPlusClick="@{viewModel.mainPlusButtonClick}"
+            onPlusClick="@{viewModel::setPlusButtonClick}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_view_close"
             app:titleText="@string/plus_title_view_text"
-            app:titleViewMode="2" />
+            app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_PLUS_BUTTON}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

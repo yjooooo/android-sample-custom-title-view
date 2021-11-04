@@ -5,21 +5,27 @@ import com.yjooooo.samplecustomtoolbar.custom.CustomTitleView
 import com.yjooooo.samplecustomtoolbar.main.MainViewModel
 
 object BindingAdapters {
+    @BindingAdapter("setTitleViewMode")
+    @JvmStatic
+    fun setTitleViewMode(view: CustomTitleView, mode: Int) {
+        view.setTitleViewMode(mode)
+    }
+
     @BindingAdapter("onBackClick")
     @JvmStatic
-    fun onBackClick(view: CustomTitleView, listener: CustomTitleView.OnBackClickListener) {
-        view.setBackButtonClickListener(listener)
+    fun onBackClick(view: CustomTitleView, clickEvent: () -> Unit) {
+        view.setBackButtonClickListener(clickEvent)
     }
 
     @BindingAdapter("onCloseClick")
     @JvmStatic
-    fun onCloseClick(view: CustomTitleView, listener: CustomTitleView.OnCloseClickListener) {
-        view.setCloseButtonClickListener(listener)
+    fun onCloseClick(view: CustomTitleView, clickEvent: () -> Unit) {
+        view.setCloseButtonClickListener(clickEvent)
     }
 
     @BindingAdapter("onPlusClick")
     @JvmStatic
-    fun onPlusClick(view: CustomTitleView, listener: CustomTitleView.OnPlusClickListener) {
-        view.setPlusButtonClickListener(listener)
+    fun onPlusClick(view: CustomTitleView, clickEvent: () -> Unit) {
+        view.setPlusButtonClickListener(clickEvent)
     }
 }

@@ -17,9 +17,6 @@ import java.lang.IllegalStateException
 class CustomTitleView : ConstraintLayout {
     private lateinit var binding: CustomTitleViewBinding
     private var titleViewMode: Int = -1
-    private var backClickListener: OnBackClickListener? = null
-    private var closeClickListener: OnCloseClickListener? = null
-    private var plusClickListener: OnPlusClickListener? = null
 
     constructor(context: Context) : super(context) {
         initView()
@@ -62,17 +59,13 @@ class CustomTitleView : ConstraintLayout {
     private fun setTypedArray(typedArray: TypedArray) {
         val titleText = typedArray.getString(R.styleable.CustomTitleView_titleText) ?: ""
         setTitleText(titleText)
-
-        val mode =
-            typedArray.getInt(R.styleable.CustomTitleView_titleViewMode, TITLE_VIEW_BACK_BUTTON)
-        setTitleViewMode(mode)
     }
 
     private fun setTitleText(title: String) {
         binding.tvCustomTitleViewTitle.text = title
     }
 
-    private fun setTitleViewMode(mode: Int) {
+    fun setTitleViewMode(mode: Int) {
         titleViewMode = mode
         when (titleViewMode) {
             TITLE_VIEW_BACK_BUTTON -> binding.btnCustomTitleViewBack.visibility = View.VISIBLE
@@ -82,39 +75,15 @@ class CustomTitleView : ConstraintLayout {
         }
     }
 
-    fun setBackButtonClickListener(listener: OnBackClickListener) {
-        backClickListener = listener
+    fun setBackButtonClickListener(clickEvent: () -> Unit) {
+            binding.btnCustomTitleViewBack.setOnClickListener { clickEvent() }
     }
 
-    fun setCloseButtonClickListener(listener: OnCloseClickListener) {
-        closeClickListener = listener
+    fun setCloseButtonClickListener(clickEvent: () -> Unit) {
+            binding.btnCustomTitleViewClose.setOnClickListener { clickEvent() }
     }
 
-    fun setPlusButtonClickListener(listener: OnPlusClickListener) {
-        plusClickListener = listener
-    }
-
-    fun backClick() {
-        backClickListener?.onBackClick()
-    }
-
-    fun closeClick() {
-        closeClickListener?.onCloseClick()
-    }
-
-    fun plusClick() {
-        plusClickListener?.onPlusClick()
-    }
-
-    interface OnBackClickListener {
-        fun onBackClick()
-    }
-
-    interface OnCloseClickListener {
-        fun onCloseClick()
-    }
-
-    interface OnPlusClickListener {
-        fun onPlusClick()
+    fun setPlusButtonClickListener(clickEvent: () -> Unit) {
+            binding.btnCustomTitleViewPlus.setOnClickListener { clickEvent() }
     }
 }
