@@ -1,6 +1,7 @@
 package com.yjooooo.samplecustomtoolbar.custom
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -21,10 +22,12 @@ class CustomTitleView2 : ConstraintLayout {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initView()
+        getAttrs(attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs) {
         initView()
+        getAttrs(attrs, defStyle)
     }
 
     private fun initView() {
@@ -36,6 +39,24 @@ class CustomTitleView2 : ConstraintLayout {
             true
         )
         binding.view = this
+    }
+
+    private fun getAttrs(attrs: AttributeSet) {
+        // obtainStyledAttributes 함수는 Context의 Theme에서 Style로 지정한 속성 정보 리스트를 가져오는 역할을 합니다.
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTitleView2)
+        setTypedArray(typedArray)
+    }
+
+    private fun getAttrs(attrs: AttributeSet, defStyle: Int) {
+        // obtainStyledAttributes 함수는 Context의 Theme에서 Style로 지정한 속성 정보 리스트를 가져오는 역할을 합니다.
+        val typedArray =
+            context.obtainStyledAttributes(attrs, R.styleable.CustomTitleView2, defStyle, 0)
+        setTypedArray(typedArray)
+    }
+
+    private fun setTypedArray(typedArray: TypedArray) {
+        val titleText = typedArray.getString(R.styleable.CustomTitleView2_text) ?: ""
+        setTitleViewText(titleText)
     }
 
     fun setTitleViewText(title: String) {

@@ -78,7 +78,7 @@
             app:layout_constraintTop_toBottomOf="@id/title_view2_close"
             app:onPlusBtnClick="@{viewModel::setPlusButtonClick}"
             app:titleViewMode="@{CustomTitleViewMode.TITLE_VIEW_PLUS_BUTTON}"
-            app:titleViewText="@{viewModel.plusTitle}" />
+            app:text="abc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
