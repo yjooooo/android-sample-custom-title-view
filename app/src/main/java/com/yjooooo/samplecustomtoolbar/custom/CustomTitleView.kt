@@ -95,26 +95,26 @@ class CustomTitleView : ConstraintLayout {
     }
 
     fun backClick() {
-        backClickListener?.onBackClick(binding.btnCustomTitleViewBack)
+        backClickListener?.onBackClick()
     }
 
     fun closeClick() {
-        closeClickListener?.onCloseClick(binding.btnCustomTitleViewClose)
+        closeClickListener?.onCloseClick()
     }
 
     fun plusClick() {
-        plusClickListener?.onPlusClick(binding.btnCustomTitleViewPlus)
+        plusClickListener?.onPlusClick()
     }
 
     interface OnBackClickListener {
-        fun onBackClick(view: View?)
+        fun onBackClick()
     }
 
     interface OnCloseClickListener {
-        fun onCloseClick(view: View?)
+        fun onCloseClick()
     }
 
     interface OnPlusClickListener {
-        fun onPlusClick(view: View?)
+        fun onPlusClick()
     }
 }
